@@ -30,7 +30,7 @@ Usage
 2. Download MIDI package and unpack it to public folder:
 
         cd public
-	wget http://www.cs.helsinki.fi/u/turkia/music/midi.zip
+        wget http://www.cs.helsinki.fi/u/turkia/music/midi.zip
         unzip midi.zip
 
 3. Start the server:
@@ -49,7 +49,7 @@ Version 0.3.3, August 30th, 2013:
 - ported to Ruby 2.0.0
 - dependency from an Apache server replaced by Sinatra
 - minor refactoring of other Ruby code
-- Java applet for piano keyboard based searches compiles but has not been tested as Java is nowadays usually disabled in browsers. It is excluded from this version. 
+- Java applet for piano keyboard based searches compiles but has not been tested as Java is nowadays usually disabled in browsers. It is included for purposes of historical interest. 
 - porting from 32 bit to 64 bit hardware has introduced bugs in some algorithms (P3, LCTS, Splitting). They are not included in this version. Debugging help is welcome.
 - publications are not included in the package
 
