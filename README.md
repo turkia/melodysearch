@@ -38,7 +38,7 @@ Usage
         admin/start_server.rb
         admin/start_webserver.rb
 
-4. Navigate to http://localhost:8080/ with your browser. 
+4. Navigate to http://localhost:8080/index.html with your browser. 
 
 
 Changelog

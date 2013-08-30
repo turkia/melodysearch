@@ -6,19 +6,12 @@
 *.x509
 *.jar
 .config
-meta_*
-keystore.cbrahms
-coverage
-InstalledFiles
-lib/bundler/man
 pkg
 rdoc
-spec/reports
-test/tmp
-test/version_tmp
+coverage
 publications
-
-# YARD artifacts
-.yardoc
-_yardoc
-doc/
+keystore.cbrahms
+lib/bundler/man
+spec/reports
+meta_*
+test/*
