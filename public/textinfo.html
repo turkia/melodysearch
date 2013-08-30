@@ -1,0 +1,150 @@
+<html>
+
+<head>
+<title>C-Brahms Retrieval Engine for Melody Searching</title>
+<link REL="stylesheet" HREF="styles_xml.css" TITLE="tktl">
+</head>
+
+<body>
+
+<h4>Quick Start</h4>
+
+<ul>
+<li>
+Enter a melody to the text field, for example 16A5 16G#5 16A5 16G#5 16A5 16E5 16G5 16F5 8D5.
+Enter a minimum of two and a maximum of 30 notes. 
+</li>
+
+<li>
+If you want to ignore rhythm, select one of the search methods 4-8 (method 4 is recommended). Otherwise select search method 1 or 2. 
+In this case you must edit the melody as follows: the number before the note indicates duration intervals between notes, 
+not durations of the notes. 
+For example, 4C5 4D5 means that the time interval between notes C5 and D5 is equivalent to the duration of a quarter note. 
+</li>
+
+<li>
+You can change the search method in the pull-down list. See the search method descriptions below. 
+If necessary, you can change also the maximum number of results, sorting method, and select whether 
+you want to see all matches or only the first match for each song. 
+</li>
+
+<li>
+Start the search by pressing the 'Search' button.
+</li>
+
+<li>
+The results appear in this frame. They include information on composer, title, notes that matched, amount of transposition, approximate bar number where the match occurred, and links to score files and to a histogram view. 
+</li>
+</ul>
+
+This demo engine uses note database produced by <a href='http://www.mutopiaproject.org' target='_parent'>Mutopia Project</a>. 
+<br>
+
+<h4>Search Methods</h4>
+
+Properties of the different search methods are presented in the following table.
+
+
+<table>
+<tr><th>#</th><th>Method Name</th><th>Transposition Invariance</th><th>Monophonic patterns</th><th>Polyphonic patterns</th><th>Preserves Rhythm</th><th>Allows Decorations</th><th>Partial Matches</th></tr>
+<tr><td>1</td><td>P1</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td> </td></tr>
+<tr><td>2</td><td>P2</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td></tr>
+<tr><td>3</td><td>P3</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td></tr>
+<tr><td>4</td><td>MonoPoly</td><td>*</td><td>*</td><td></td><td></td><td> </td><td></td></tr>
+<tr><td>5</td><td>IntervalMatching</td><td>*</td><td>*</td><td></td><td></td><td> </td></tr>
+<tr><td>6</td><td>ShiftOrAnd</td><td></td><td>*</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>7</td><td>PolyCheck</td><td> </td><td>*</td><td>*</td><td></td><td></td><td></td></tr>
+<tr><td>8</td><td>Splitting</td><td>*</td><td>*</td><td> </td><td></td><td>*</td><td></td></tr>
+<tr><td>9</td><td>LCTS</td><td>*</td><td>*</td><td> </td><td> </td><td>*</td><td>*</td></tr>
+</table>
+
+<br />
+
+Search types 1, 2 and 3 have the least limitations. When using other search types a match will not be found 
+if there is an extra note between two requested notes, e.g. a grace note or a note played by another instrument.
+<br>
+On the other hand, search types 1 and 2 require that the rhythm is exact; search for 4C5 4D5 does not find 8C5 8D5. 
+You may want to try several search types to find different types of matches.
+<br />
+<br />
+
+Examples:
+
+<ul>
+<li>
+pattern <a href='/matches?notepattern=A5+G%235+A5+G%235+A5+E5+G5+F5&limit=100&sort=2&algorithm=monopoly&songonce=1'>A5 G#5 A5 G#5 A5 E5 G5 F5</a> will find F&uuml;r Elise by Beethoven with search type 4, ignoring rhythm. 
+</li>
+<li>
+Pattern <a href='/matches?notepattern=16A5+16G%235+16A5+16G%235+16A5+16E5+16G5+16F5&limit=100&sort=2&algorithm=geometric_p1&songonce=1'>16A5 16G#5 16A5 16G#5 16A5 16E5 16G5 16F5 8D5</a> specifies a sequence of notes which are 16th apart from each other. It will find F&uuml;r Elise by Beethoven with search type 1, matching the rhythm.
+</li>
+</ul>
+
+<h4>Rhythmic Search</h4>
+
+As mentioned above, search methods 1 and 2 allow for specifying rhythm, i.e. time intervals between starting times of the notes. There may be grace notes or other notes between the specified notes. This does not matter as long as the rhythm matches.
+<br /><br />
+If time intervals are not given, intervals corresponding to the duration of a quarter note (marked with 4) are assumed. 
+<br /><br />
+You must edit time intervals manually in the text field. The first number in the note name specifies the interval, the second the note name and the third the octave. The last value is actually insignificant, but you must type some value. 
+<br /><br />
+Time intervals are specified as follows: 1 for full note, 2 for half note, 4 for quarter note, 8 for eighth note, 16 for sixteenth note, etc. You may give any two-digit integer divisor. For example, 12 specifies one note belonging to a triole formed from a quarter note (1/4/3=1/12). Note that due to MIDI related limitations, strange divisors may give unreliable results. 
+<br /><br />
+
+<h4>Polyphonic Search</h4>
+
+You must edit the note pattern in the text field manually. First, enter the notes with the piano keys and then connect notes in the same chord by replacing the space between notes with a plus (+) sign. Alternatively you can type the whole pattern directly by hand. 
+Select search method 1, 2, 3 or 7.
+<br /><br />
+Polyphonic pattern <a href='/matches?notepattern=C5%2bE5%2bG5+D5%2bF5&limit=100&sort=2&algorithm=polycheck&songonce=1'>C5+E5+G5 D5+F5</a> will find exact matches only, including Song without Words with search type 6. 
+Same pattern <a href='/matches?notepattern=C5%2bE5%2bG5+D5%2bF5&limit=100&sort=2&algorithm=geometric_p1&songonce=1'>C5+E5+G5 D5+F5</a>  with search type 1 finds more matches, because it allows transpositions and decorative notes.
+It does not find the exact match in Scheidemann's Praeambulum no.13 in G like search type 7, because it does not match the rhythm (time interval between chords is assumed to be 4, since the interval is not given). Change pattern to 
+<a href='/matches?notepattern=8C5%2b8E5%2b8G5+8D5%2b8F5&limit=100&sort=2&algorithm=geometric_p1&songonce=1'>8C5+8E5+8G5 8D5+8F5</a> to find it.
+<br /><br />
+
+<h4>Histogram view</h4>
+
+In the histogram view you can view several note data histograms. 
+<br /><br />
+<ul>
+<li>Pitch Class Histogram shows distribution of note classes.</li>
+<li>Pitch Histogram shows distribution of notes.</li>
+<li>Pitch Interval Histogram shows distribution of note pitch intervals. Intervals are calculated separately for each MIDI track.</li>
+<li>Duration Class Histogram shows approximate distribution of note durations.</li>
+<li>Histogram view opens as a new large window. You can resize and move it yourself; when you click other histogram links they will open to the same window.</li>
+</ul>
+
+<h4>Score Files</h4>
+
+Score files are provided in A4 PDF format. You can find other formats for all files on Mutopia Project homepages.
+<br><br> 
+
+<h4>FAQ</h4>
+
+Q: I can't find what I'm looking for.
+<br />
+A: Check that the song is in the <a href='meta.html'>Song list</a>. Otherwise it is not included in the database.
+Currently the database does not contain songs added to Mutopia collection after October 2002.
+<br />
+A: Try different search methods. Each has different limitations, that might exclude the song you are looking for. 
+<br />
+A: Increase the Max. Results value to see more matches. Use your browser's 'Find' feature to search for e.g. composer name, 
+if there are too many results. 
+<br />
+A: The bar number is approximate and sometimes fails. The match is somewhere else in the song. You can see which chords match by looking at the address of the link in Matched Notes field. The end of the link address may be for example firstchord=842&amp;lastchord=846. Here firstchord and lastchord give the position of the match. "Chord" here means that each note with onset time different from previous note starts a new "chord". E.g. in the pattern "C5+E5 D5 F5" C5 and E5 belong to chord 0, D5 to chord 1, and F5 to chord 2.
+<br />
+A: If you still can't find what you are looking for and the song is in the database, 
+send us a report and tell what you are trying to find, and we will get back to you. 
+<br /><br />
+
+Q: Can I freely use/print the MIDI and score files provided here?
+<br />
+A: In principle, yes. Consult <a href='http://www.mutopiaproject.org/legal.html' target='_parent'>Mutopia Project Legal Issues</a> for details.
+<br /><br />
+
+Q: There is no article reference for search method 7.
+<br />
+A: This method is a simple checking method for MonoPoly algorithm (method 4). It has not been published.
+<br /><br />
+
+</body>
+</html>

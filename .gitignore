@@ -1,7 +1,14 @@
 *.gem
 *.rbc
-.bundle
+*.songs
+*.o
+*.so
+*.bundle
+*.x509
+*.jar
 .config
+meta_*
+keystore.cbrahms
 coverage
 InstalledFiles
 lib/bundler/man
@@ -10,7 +17,7 @@ rdoc
 spec/reports
 test/tmp
 test/version_tmp
-tmp
+publications
 
 # YARD artifacts
 .yardoc

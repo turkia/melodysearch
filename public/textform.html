@@ -1,0 +1,132 @@
+<html>
+
+<head>
+<title>C-BRAHMS Melody Search Engine</title>
+<link rel="stylesheet" href="styles_xml.css" title="tktl">
+</head>
+
+<body>
+<br>
+
+<div align="center">
+<div class="header" align="center">
+C-Brahms Retrieval Engine for Melody Searching
+(<a class='button' href='meta.html' target='result'>Song list</a>, 
+<a class='button' href='textinfo.html' target='result'>Help</a>)
+</div>
+
+<br>
+
+<form action="/matches" method="get" target="result">
+
+<table>
+
+<tr>
+<td><h5>Note Pattern</h5></td><td></td>
+<td><h5>Text Pattern (optional)</h5></td>
+<td></td>
+</tr>
+
+<tr>
+<td><input type="text" value="" name="notepattern" size='52'></input></td>
+<td><input type="reset" value="Clear"></input></td>
+<td><input type="text" value="" name="textpattern" size='22'></input></td>
+<td><input type="submit" value="Search"></input></td>
+<td>
+</td>
+</tr>
+
+<tr>
+<td><h5>Search method</h5></td>
+<td><h5>Max. results</h5></td>
+<td><h5>Sorting</h5></td>
+<td><h5>Matches inside song</h5></td>
+<td><h5>Max. errors</h5></td>
+<td><h5>Max. gap</h5></td>
+</tr>
+
+<tr>
+<td>
+<select size='1' name='algorithm'>
+<option selected value='geometric_p1'>[1] P1</option>
+<option value='geometric_p2'>[2] P2 (specify max. errors)</option>
+<!--
+<option value='geometric_p3'>[3] P3</option>
+-->
+<option value='monopoly'>[4] MonoPoly</option>
+<option value='shiftorand'>[5] ShiftOrAnd</option>
+<option value='intervalmatching'>[6] IntervalMatching</option>
+<option value='polycheck'>[7] PolyCheck</option>
+<!--
+<option value='splitting'>[8] Splitting: minimize jumps between tracks (specify max.gap)</option>
+<option value='lcts'>[9] LCTS tracks separately (specify max. errors)</option>
+<option value='dynprog'>[10] Dynamic Programming</option>
+-->
+</select>
+</td>
+<td>
+<select size='1' name='limit'>
+<option selected value='10'>10</option>
+<option value='20'>20</option>
+<option value='40'>40</option>
+<option value='60'>60</option>
+<option value='80'>80</option>
+<option value='100'>100</option>
+<option value='200'>200</option>
+<option value='300'>300</option>
+<option value='400'>400</option>
+<option value='500'>500</option>
+</select>
+</td>
+<td>
+<select size='1' name='sort'>
+<option value='0'>No Sorting</option>
+<option value='1'>Transposition</option>
+<option selected value='2'>Errors and Transposition</option>
+<option value='3'>Splits</option>
+<option value='4'>Duration</option>
+</select>
+</td>
+<td>
+<select size='1' name='songonce'>
+<option selected value='1'>First Match</option>
+<option value='0'>All Matches</option>
+</select>
+</td>
+<td>
+<select size='1' name='errors'>
+<option selected value='0'>0</option>
+<option value='1'>1</option>
+<option value='2'>2</option>
+<option value='3'>3</option>
+<option value='4'>4</option>
+<option value='5'>5</option>
+<option value='6'>6</option>
+<option value='7'>7</option>
+<option value='8'>8</option>
+<option value='9'>9</option>
+<option value='10'>10</option>
+</select>
+</td>
+<td>
+<select size='1' name='gap'>
+<option selected value='0'>0</option>
+<option value='1'>1</option>
+<option value='2'>2</option>
+<option value='3'>3</option>
+<option value='4'>4</option>
+<option value='5'>5</option>
+<option value='6'>6</option>
+<option value='7'>7</option>
+<option value='8'>8</option>
+<option value='9'>9</option>
+<option value='10'>10</option>
+</select>
+</td>
+</tr>
+
+</table>
+</form>
+
+</body>
+</html>
