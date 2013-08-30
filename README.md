@@ -1,15 +1,15 @@
 C-Brahms Engine for Musical Information Retrieval
 =================================================
 
-University of Helsinki, Department of Computer Science
-Version 0.3.3, August 30th, 2013
 
 Introduction
 ------------
 
 This software contains very performant algorithms for melody-based searching of MIDI files.
-It was written as a part of an algorithm research project in 2002-2003
-for Ruby 1.6 and updated to Ruby 2.0 in August 2013.
+It was written in 2002-2003 as a part of C-BRAHMS algorithm research project at the 
+University of Helsinki, Department of Computer Science. It was originally written in 
+Ruby 1.6 with extensions in C. It has been partially ported to Ruby 2.0 in August 2013.
+Originally the platform was Linux; now it has been tested on OS X 10.8 only. 
 
 At the moment this software is unmaintained. 
 Bug fixes are welcome, but don't send feature requests or bug reports without a fix. 
@@ -29,10 +29,14 @@ Usage
 
 2. Download MIDI package and unpack it to public folder:
 
+        cd public
+	wget http://www.cs.helsinki.fi/u/turkia/music/midi.zip
+        unzip midi.zip
+
 3. Start the server:
 
-	admin/start_server.rb
-	admin/start_webserver.rb
+        admin/start_server.rb
+        admin/start_webserver.rb
 
 4. Navigate to http://localhost:8080/ with your browser. 
 
@@ -98,35 +102,19 @@ Overview (original version of 2003):
 
      ----------- 
     |  applet   |----
-     -----------     |  http    -------------------    drb    ------------ 
-                     |---------| get*.rb/client.rb |---------|  server.rb |
-     -----------     |          -------------------           ------------ 
-    | HTML form |----                                               | 1..1
-     -----------                                                    |
-                                                                    | 0..*
-                                                             ----------------  
-                                                            | SongCollection |
-                                                             ---------------- 
-                                                                    | 1..1
-                                                                    |
-                                                                    | 0..*
-                                                                  ------
-                                                                 | Song |
-                                                                  ------
+     -----------     |  http    --------------    drb    ------------ 
+                     |---------|  client.rb  |---------|  server.rb |
+     -----------     |          --------------           ------------ 
+    | HTML form |----                                          | 1..1
+     -----------                                               |
+                                                               | 0..*
+                                                       ----------------  
+                                                      | SongCollection |
+                                                       ---------------- 
+                                                               | 1..1
+                                                               |
+                                                               | 0..*
+                                                             ------
+                                                            | Song |
+                                                             ------
 
-Bugs (2003)
------------
-
-- Splitting algorithm crashes on some data. 
-- Dynprog and lcts return different results; it's unclear if this is correct or not. Possibly a bug in dynprog.
-- Overlapping note segments problem in C version of P3 is fixed, but incorrect chord indexes were returned; this may or may not be corrected.
-- Bar calculation may not be working correctly in all cases due to MIDI limitations. 
-- Matched notes don't give an idea of durations; also simultaneous notes in polyphonic patterns are presented incorrectly as a sequence.
-
-To do (2003)
-------------
-
-- Matched notes should contain duration information (maybe duration class since deriving actual symbolic duration is difficult). 
-- Source scanning could be implemented more cleanly in some algorithms.
-- If only best match for each song is requested, other matches should be discarded already in the algorithm, if possible. 
-- Pattern processing is still a bit clumsy, e.g. Note and Chord classes could be replaced with arrays. 
