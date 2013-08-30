@@ -1,0 +1,13 @@
+C-Brahms Engine for Musical Information Retrieval
+University of Helsinki, Department of Computer Science
+
+Version 0.2.4, May 15th, 2003
+Copyright (C) 2002-2003 Mika Turkia
+
+Convert MIDI files to IRP files. 
+
+Usage:
+
+midi2irp.rb <mididir>
+
+IRP files are saved in the original directory as <filename>.irp.
