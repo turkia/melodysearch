@@ -41,6 +41,14 @@ Usage
 4. Navigate to http://localhost:8080/index.html with your browser. 
 
 
+Algorithm references
+--------------------
+
+[Geometric algorithms P1, P2 and P3](http://www.cs.helsinki.fi/group/cbrahms/publications/ukkonen_lemstrom_makinen.pdf)
+[Monopoly, ShiftOrAnd](http://www.cs.helsinki.fi/group/cbrahms/publications/lemstrom_tarhio.pdf)
+[Splitting](http://www.cs.helsinki.fi/group/cbrahms/publications/lemstrom_makinen.pdf)
+[LCTS](http://www.cs.helsinki.fi/group/cbrahms/publications/makinen_navarro_ukkonen.pdf)
+
 Changelog
 ---------
 
