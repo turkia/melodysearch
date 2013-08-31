@@ -20,26 +20,6 @@
    that each piece is found in some text track T^k, and the occurrences
    of the pieces are consecutive having at most an alpha-gap between
    two pieces. The objective is to minimize kappa.
-
-
-   This file is part of C-Brahms Engine for Musical Information Retrieval.
-
-   C-Brahms Engine for Musical Information Retrieval is free software; 
-   you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-
-   C-Brahms Engine for Musical Information Retrieval is distributed 
-   in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
-   without even the implied warranty of MERCHANTABILITY or FITNESS 
-   FOR A PARTICULAR PURPOSE. 
-   See the GNU General Public License for more details.
-
-   You should have received a copy of the GNU General Public License
-   along with C-Brahms Engine for Musical Information Retrieval; 
-   if not, write to the Free Software Foundation, Inc., 59 Temple Place, 
-   Suite 330, Boston, MA  02111-1307  USA
 */
 
 
@@ -57,7 +37,7 @@
 #define min2(a,b) ((a)<(b)?(a):(b))
 
 
-inline static tripleNode  *newtripleNode()
+static tripleNode  *newtripleNode()
 {
 	tripleNode *node = (tripleNode*) calloc(1, sizeof(tripleNode));
 	// correct values for first row!
@@ -66,7 +46,7 @@ inline static tripleNode  *newtripleNode()
 }
 
 
-inline static tripleNode  *newtripleNode2(int i, int j, int k, int kappa, tripleNode *next)
+static tripleNode  *newtripleNode2(int i, int j, int k, int kappa, tripleNode *next)
 {
    tripleNode *node = (tripleNode*) calloc(1, sizeof(tripleNode));
    node->i = i; node->j = j; node->k = k; node->kappa = kappa; node->next = next;
@@ -75,7 +55,7 @@ inline static tripleNode  *newtripleNode2(int i, int j, int k, int kappa, triple
 }
 
 
-inline static tripleNode *rowCopy(tripleNode *node, int i)
+static tripleNode *rowCopy(tripleNode *node, int i)
 {
    return newtripleNode2(i,node->j,node->k,node->kappa,node->next);
 };

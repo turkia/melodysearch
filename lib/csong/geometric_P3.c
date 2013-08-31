@@ -13,26 +13,6 @@
    Sweepline the Music! In Computer Science in Perspective (LNCS 2598), 
    R. Klein, H.-W. Six, L. Wegner (Eds.), pp. 330-342, 2003.
    Consult the article for description. 
-
-
-   This file is part of C-Brahms Engine for Musical Information Retrieval.
-
-   C-Brahms Engine for Musical Information Retrieval is free software; 
-   you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-
-   C-Brahms Engine for Musical Information Retrieval is distributed 
-   in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
-   without even the implied warranty of MERCHANTABILITY or FITNESS 
-   FOR A PARTICULAR PURPOSE. 
-   See the GNU General Public License for more details.
-
-   You should have received a copy of the GNU General Public License
-   along with C-Brahms Engine for Musical Information Retrieval; 
-   if not, write to the Free Software Foundation, Inc., 59 Temple Place, 
-   Suite 330, Boston, MA  02111-1307  USA
 */
 
 #include "geometric_P3_priority_queue.h"
@@ -97,7 +77,7 @@ VALUE c_geometric_p3_scan(VALUE self, VALUE init_info)
 
 	num_tpoints = NUM2UINT(rb_iv_get(self, "@preprocessed_p3_num_turningpoints"));
 	quarternoteduration = NUM2UINT(rb_iv_get(self, "@quarternoteduration")) ;
-	p = (vector *) RSTRING(rb_iv_get(init_info, "@pattern_polyphonic_vector"))->ptr;
+	p = (vector *) RSTRING_PTR(rb_iv_get(init_info, "@pattern_polyphonic_vector"));
 
 	for (j=0; j<pattern_notes;j++) matchednotes[j]=0;
 
@@ -105,7 +85,7 @@ VALUE c_geometric_p3_scan(VALUE self, VALUE init_info)
 	pq = p3_create_priority_queue(pattern_notes * 4);
 
 	/* initialize Y array */
-	verticaltranslationtable = (VerticalTranslationTableItem *) RSTRING(rb_iv_get(init_info, "@t"))->ptr;
+	verticaltranslationtable = (VerticalTranslationTableItem *) RSTRING_PTR(rb_iv_get(init_info, "@t"));
 	for (i = 0; i < 256; i++)
 	{
 		verticaltranslationtable[i].value = 0;
@@ -127,8 +107,8 @@ VALUE c_geometric_p3_scan(VALUE self, VALUE init_info)
 	/* used in match reporting; matches with duration at least half of the pattern duration are accepted. */
 	halfdursum = dursum * 0.75;
 
-	startpoints = (TurningPoint *) RSTRING(rb_iv_get(self, "@preprocessed_p3_startpoints"))->ptr;
-	endpoints = (TurningPoint *) RSTRING(rb_iv_get(self, "@preprocessed_p3_endpoints"))->ptr;
+	startpoints = (TurningPoint *) RSTRING_PTR(rb_iv_get(self, "@preprocessed_p3_startpoints"));
+	endpoints = (TurningPoint *) RSTRING_PTR(rb_iv_get(self, "@preprocessed_p3_endpoints"));
 
 
 	/* create an array whose items have two pointers each: one for startpoints and one for endpoints. */
@@ -278,7 +258,7 @@ VALUE c_geometric_p3_scan(VALUE self, VALUE init_info)
 }
 
 
-inline static int compare_turningpoints(const void *aa, const void *bb)
+static int compare_turningpoints(const void *aa, const void *bb)
 {       
 	/* sort by x coordinate of the translation vector */
 	TurningPoint *a, *b;
@@ -291,7 +271,7 @@ inline static int compare_turningpoints(const void *aa, const void *bb)
  
 
 /* Returns a node with minimum translation vector (vector.x,vector.y) and deletes it from the tree. */
-inline static treenode p3_get_min(priority_queue *pq)
+static treenode p3_get_min(priority_queue *pq)
 {
 	/* the minimum is always in the root */
 	treenode e[1], n =  pq->tree[1];
@@ -309,7 +289,7 @@ inline static treenode p3_get_min(priority_queue *pq)
 /* Creates a priority queue into which a number of items indicated by 'size' parameter can be added. 
    Programmer must take care of not adding too many items; overflows are not checked.
 */
-inline static priority_queue *p3_create_priority_queue(unsigned int size)
+static priority_queue *p3_create_priority_queue(unsigned int size)
 {
 	unsigned int i;
 	doubleAndMask fm;
@@ -326,7 +306,7 @@ inline static priority_queue *p3_create_priority_queue(unsigned int size)
 
 
 /* Adds or replaces node with given key. */
-inline static void p3_update_value(priority_queue *pq, treenode *n)
+static void p3_update_value(priority_queue *pq, treenode *n)
 {
 	/* update priority from leaf 'key' to the root */
 	unsigned int i = pq->leaves + n->key;

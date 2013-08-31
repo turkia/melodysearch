@@ -6,36 +6,13 @@
 
    Copyright Mika Turkia
 
-   Contacts: turkia at cs helsinki fi
-
    Implements a wrapper for LCTS algorithm by Veli Makinen.
    Version that handles all tracks of a polyphonic song separately. 
-
-
-   This file is part of C-Brahms Engine for Musical Information Retrieval.
-
-   C-Brahms Engine for Musical Information Retrieval is free software; 
-   you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-
-   C-Brahms Engine for Musical Information Retrieval is distributed 
-   in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
-   without even the implied warranty of MERCHANTABILITY or FITNESS 
-   FOR A PARTICULAR PURPOSE. 
-   See the GNU General Public License for more details.
-
-   You should have received a copy of the GNU General Public License
-   along with C-Brahms Engine for Musical Information Retrieval; 
-   if not, write to the Free Software Foundation, Inc., 59 Temple Place, 
-   Suite 330, Boston, MA  02111-1307  USA
 */
 
 
 #include "song.h"
 #include "lcts.h"
-
 
 
 /*
@@ -66,17 +43,15 @@ VALUE c_lcts_distances(VALUE self, VALUE song2)
 	/* compare each track of this song to each track of song2. */
 	for (trackind1 = 1; trackind1 <= num_tracks1; trackind1++)
 	{
-		track1 = (char *) RSTRING(RARRAY(tracks_ary1)->ptr[trackind1])->ptr;
-		track1_len = NUM2UINT(RARRAY(tracklengths1)->ptr[trackind1]);
+		track1 = (char *) RSTRING_PTR(RARRAY_PTR(tracks_ary1)[trackind1]);
+		track1_len = NUM2UINT(RARRAY_PTR(tracklengths1)[trackind1]);
 
 		for (trackind2 = 1; trackind2 <= num_tracks2; trackind2++)
 		{
-			track2 = (char *) RSTRING(RARRAY(tracks_ary2)->ptr[trackind2])->ptr;
-			track2_len = NUM2UINT(RARRAY(tracklengths2)->ptr[trackind2]);
+			track2 = (char *) RSTRING_PTR(RARRAY_PTR(tracks_ary2)[trackind2]);
+			track2_len = NUM2UINT(RARRAY_PTR(tracklengths2)[trackind2]);
 			rb_ary_push(result_list, INT2NUM(computeAllTranspositions(Mt, track1, track2, track1_len, track2_len)));
 		}
 	}
 	return result_list;
 }
-
-

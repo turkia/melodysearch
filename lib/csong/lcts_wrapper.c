@@ -6,36 +6,13 @@
 
    Copyright Mika Turkia
 
-   Contacts: turkia at cs helsinki fi
-
    Implements a wrapper for LCTS algorithm by Veli Makinen.
    Version that handles all tracks of a polyphonic song separately. 
-
-
-   This file is part of C-Brahms Engine for Musical Information Retrieval.
-
-   C-Brahms Engine for Musical Information Retrieval is free software; 
-   you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-
-   C-Brahms Engine for Musical Information Retrieval is distributed 
-   in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
-   without even the implied warranty of MERCHANTABILITY or FITNESS 
-   FOR A PARTICULAR PURPOSE. 
-   See the GNU General Public License for more details.
-
-   You should have received a copy of the GNU General Public License
-   along with C-Brahms Engine for Musical Information Retrieval; 
-   if not, write to the Free Software Foundation, Inc., 59 Temple Place, 
-   Suite 330, Boston, MA  02111-1307  USA
 */
 
 
 #include "song.h"
 #include "lcts.h"
-
 
 
 /*
@@ -67,7 +44,7 @@ VALUE c_lcts_scan(VALUE self, VALUE init_info)
 	/* Get the rest of parameters */
 	zero = INT2FIX(0);
 	result_list = rb_iv_get(init_info, "@matches");
-	p = (char *) RSTRING(rb_iv_get(init_info, "@pattern_pitch_string"))->ptr;
+	p = (char *) RSTRING_PTR(rb_iv_get(init_info, "@pattern_pitch_string"));
 	errors = NUM2INT(rb_iv_get(init_info, "@errors"));
 
 	num_tracks = NUM2UINT(rb_iv_get(self, "@num_tracks"));
@@ -79,7 +56,7 @@ VALUE c_lcts_scan(VALUE self, VALUE init_info)
 	/* search each track separately. */
 	for (trackind = 1; trackind <= num_tracks; trackind++)
 	{
-		track = (char *) RSTRING(RARRAY(tracks_ary)->ptr[trackind])->ptr;
+		track = (char *) RSTRING_PTR(RARRAY_PTR(tracks_ary)[trackind]);
 
 		/* null characters indicate that there is no note in this chord on this track. */
 		/* they are used by e.g. splitting algorithm. here we must remove them. */
@@ -131,5 +108,3 @@ VALUE c_lcts_scan(VALUE self, VALUE init_info)
 
 	return result_list;
 }
-
-
