@@ -39,6 +39,14 @@ Usage
 4. Navigate to http://localhost:8080/index.html with your browser. 
 
 
+More information
+----------------
+
+- [Conference poster](http://www.cs.helsinki.fi/u/turkia/music/cbrahms_s.pdf)
+- [C-BRAHMS group and search engine introduction](http://www.cs.helsinki.fi/u/turkia/music/ismir2003.pdf)
+- [An introduction in Finnish](http://www.cs.helsinki.fi/u/turkia/music/tutkielma.pdf)
+
+
 Algorithm references
 --------------------
 
@@ -46,6 +54,7 @@ Algorithm references
 - [Monopoly, ShiftOrAnd](http://www.cs.helsinki.fi/group/cbrahms/publications/lemstrom_tarhio.pdf)
 - [Splitting](http://www.cs.helsinki.fi/group/cbrahms/publications/lemstrom_makinen.pdf)
 - [LCTS](http://www.cs.helsinki.fi/group/cbrahms/publications/makinen_navarro_ukkonen.pdf)
+
 
 Changelog
 ---------
