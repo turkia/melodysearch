@@ -6,14 +6,9 @@
 
    Copyright Mika Turkia
 
-   Contacts: turkia at cs helsinki fi
-
    The functions defined in this class become methods of Song class
    when this library is loaded with require command from a Ruby program.
-
-   This file is part of C-Brahms Engine for Musical Information Retrieval.
 */
-
 
 #include "song.h"
 
@@ -44,11 +39,7 @@ void Init_Song()
 	rb_define_module_function(cSong, "init_shiftorand", c_shiftorand_init, 1);
 	rb_define_module_function(cSong, "init_intervalmatching", c_intervalmatching_init, 1);
 	rb_define_module_function(cSong, "init_geometric_p2", c_geometric_p2_init, 1);
-	//rb_define_module_function(cSong, "init_geometric_p3", c_geometric_p3_init, 1);
-	//rb_define_module_function(cSong, "init_simple_p3", c_simple_p3_init, 1);
-
-	/* optional post-scan phase functions; called after search if defined. */
-	/* rb_define_module_function(cSong, "post_<name>", c_<name>_post, 1); */
+	rb_define_module_function(cSong, "init_geometric_p3", c_geometric_p3_init, 1);
 
 	/* scanning functions */
 	rb_define_method(cSong, "scan_monopoly", c_monopoly_scan, 1);
@@ -56,8 +47,10 @@ void Init_Song()
 	rb_define_method(cSong, "scan_intervalmatching", c_intervalmatching_scan, 1);
 	rb_define_method(cSong, "scan_geometric_p1", c_geometric_p1_scan, 1);
 	rb_define_method(cSong, "scan_geometric_p2", c_geometric_p2_scan, 1);
-	//rb_define_method(cSong, "scan_geometric_p3", c_geometric_p3_scan, 1);
-	//rb_define_method(cSong, "scan_simple_p3", c_simple_p3_scan, 1);
+	rb_define_method(cSong, "scan_geometric_p3", c_geometric_p3_scan, 1);
+	rb_define_method(cSong, "scan_lcts", c_lcts_scan, 1);
+	rb_define_method(cSong, "scan_splitting", c_splitting_scan, 1);
+	rb_define_method(cSong, "scan_dynprog", c_dynprog_scan, 1);
 
 	/* function to get chord data for playing a match */
 	/* arguments: numbers of the first and the last chord */
@@ -66,12 +59,8 @@ void Init_Song()
 	rb_define_method(cSong, "pitch_histogram_folded", c_pitch_histogram_folded, 0);
 	rb_define_method(cSong, "pitch_interval_histogram", c_pitch_interval_histogram, 0);
 	rb_define_method(cSong, "duration_histogram", c_duration_histogram, 0);
-
-	/*
-	rb_define_method(cSong, "scan_lcts", c_lcts_scan, 1);
-	rb_define_method(cSong, "scan_splitting", c_splitting_scan, 1);
 	rb_define_method(cSong, "lcts_distances", c_lcts_distances, 1);
-	*/
 
-	rb_define_method(cSong, "scan_dynprog", c_dynprog_scan, 1);
+	/* optional post-scan phase functions; called after search if defined. */
+	/* rb_define_module_function(cSong, "post_<name>", c_<name>_post, 1); */
 }
