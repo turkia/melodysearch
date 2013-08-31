@@ -7,8 +7,6 @@
 
    Copyright Mika Turkia
 
-   Contacts: turkia at cs helsinki fi
-
    Implements an algorithm described in Kjell Lemstrom and Jorma Tarhio:  
    Transposition Invariant Pattern Matching for Multi-Track Strings. 
    Nordic Journal of Computing (to appear).

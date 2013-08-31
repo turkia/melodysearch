@@ -6,8 +6,6 @@
 
    Copyright Mika Turkia
 
-   Contacts: turkia at cs helsinki fi
-
    Implements an algorithm described in Esko Ukkonen, Kjell Lemstrom and Veli Makinen: 
    Sweepline the Music! In Computer Science in Perspective (LNCS 2598), 
    R. Klein, H.-W. Six, L. Wegner (Eds.), pp. 330-342, 2003.
