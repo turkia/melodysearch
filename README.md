@@ -7,7 +7,13 @@ Introduction
 
 This software contains very performant algorithms for melody-based searching of MIDI files.
 It was written in 2002-2003 as a part of C-BRAHMS algorithm research project at the 
-University of Helsinki, Department of Computer Science. It was originally written in 
+University of Helsinki, Department of Computer Science. For more information, see e.g.:
+
+- [Conference poster](http://www.cs.helsinki.fi/u/turkia/music/cbrahms_s.pdf)
+- [C-BRAHMS group and search engine introduction](http://www.cs.helsinki.fi/u/turkia/music/ismir2003.pdf)
+- [An introduction in Finnish](http://www.cs.helsinki.fi/u/turkia/music/tutkielma.pdf)
+
+The search engine was originally written in 
 Ruby 1.6 with extensions in C. It has been partially ported to Ruby 2.0 in August 2013.
 Originally the platform was Linux; now it has been tested on OS X 10.8 only. 
 
@@ -37,14 +43,6 @@ Usage
         admin/start_webserver.rb
 
 4. Navigate to http://localhost:8080/index.html with your browser. 
-
-
-More information
-----------------
-
-- [Conference poster](http://www.cs.helsinki.fi/u/turkia/music/cbrahms_s.pdf)
-- [C-BRAHMS group and search engine introduction](http://www.cs.helsinki.fi/u/turkia/music/ismir2003.pdf)
-- [An introduction in Finnish](http://www.cs.helsinki.fi/u/turkia/music/tutkielma.pdf)
 
 
 Algorithm references
