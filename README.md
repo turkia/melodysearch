@@ -1,6 +1,7 @@
 C-Brahms Engine for Musical Information Retrieval
 =================================================
 
+![Screenshot](http://www.cs.helsinki.fi/u/turkia/music/melodysearch.png)
 
 Introduction
 ------------
