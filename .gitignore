@@ -15,3 +15,5 @@ lib/bundler/man
 spec/reports
 meta_*
 test/*
+Makefile
+*.zip

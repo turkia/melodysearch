@@ -1,48 +1,35 @@
-body,th { 
+body { 
   color: #aa0000;  
-  background-color: #ffffff;
   font-size: 9pt;
   line-height: 11pt; 
   font-family: sans-serif;
-  font-variant: normal;
-  font-style: normal;
-}
-
-td { 
-  color: #aa0000;  
-  background-color: #ffffff;
-  font-size: 9pt;
-  line-height: 11pt; 
-  font-family: monospace;
-  font-variant: normal;
-  font-style: normal;
 }
 
 a { 
+  color: #aa0000;  
   font-size: 9pt;
   line-height: 11pt; 
   font-family: sans-serif; 
-  font-variant: normal;
-  font-style: normal;
-}
-
-h1 { 
-  color: #000000;  
-  background-color: white;  
-  font-weight: bold; 
-  font-size: 10pt;
-  line-height: 11pt; 
-  font-family: sans-serif; 
-  font-variant: normal;
-  font-style: normal;
 }
 
 table { 
+  border:1px solid;
+  border-radius:10px;
   font-weight: normal; 
   font-size: 10pt;
   line-height: 10pt; 
   font-family: sans-serif; 
-  font-variant: normal;
-  font-style: normal;
-  border: solid;
+  padding: 8px;
+  margin: 6px;
+  background-color: #e6f1f6;  
+}
+
+th,td { 
+  color: #aa0000;  
+  font-size: 9pt;
+  line-height: 11pt; 
+}
+
+td {
+  font-family: monospace;
 }
