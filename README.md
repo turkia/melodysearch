@@ -1,10 +1,8 @@
-C-Brahms Engine for Musical Information Retrieval
-=================================================
+### C-Brahms Engine for Musical Information Retrieval
 
 ![Screenshot](http://www.cs.helsinki.fi/u/turkia/music/melodysearch.png)
 
-Introduction
-------------
+#### Introduction
 
 This software contains very performant algorithms for melody-based searching of MIDI files.
 It was written in 2002-2003 as a part of C-BRAHMS algorithm research project at the 
@@ -21,8 +19,7 @@ Originally the platform was Linux; now it has been tested on OS X 10.8 only.
 At the moment this software is unmaintained. 
 Bug fixes are welcome, but don't send feature requests or bug reports without a fix. 
 
-Usage
------
+#### Usage
 
 0. Install Ruby 2.0.0, SMF 0.15.12 and other dependencies:
        
@@ -46,8 +43,7 @@ Usage
 4. Navigate to http://localhost:8080/index.html with your browser. 
 
 
-Algorithm references
---------------------
+#### Algorithm references
 
 - [Geometric algorithms P1, P2 and P3](http://www.cs.helsinki.fi/group/cbrahms/publications/ukkonen_lemstrom_makinen.pdf)
 - [Monopoly, ShiftOrAnd](http://www.cs.helsinki.fi/group/cbrahms/publications/lemstrom_tarhio.pdf)
@@ -55,8 +51,7 @@ Algorithm references
 - [LCTS](http://www.cs.helsinki.fi/group/cbrahms/publications/makinen_navarro_ukkonen.pdf)
 
 
-Changelog
----------
+#### Changelog
 
 Version 0.3.3, August 30th, 2013:
 
