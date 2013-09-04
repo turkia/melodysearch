@@ -46,7 +46,6 @@ typedef struct
 } priority_queue;
 
 
-inline static priority_queue *p3_create_priority_queue(unsigned int size);
-inline static void p3_update_value(priority_queue *pq, treenode *n);
-inline static treenode p3_get_min(priority_queue *pq);
-
+static priority_queue *p3_create_priority_queue(unsigned int size);
+static void p3_update_value(priority_queue *pq, treenode *n);
+static treenode p3_get_min(priority_queue *pq);

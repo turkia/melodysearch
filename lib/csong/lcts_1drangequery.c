@@ -28,7 +28,7 @@
 
 
 /* Logarithm of base 2. */
-inline unsigned int log_2(unsigned long n)
+unsigned int log_2(unsigned long n)
 {
 	doubleAndMask fm;
 	fm.asDouble = (double) n;
@@ -55,7 +55,7 @@ treeNode *CreateCompleteBinaryTree(unsigned int leaves)
 
 
 /* Searchs for the predecessor of i in the tree. */
-inline unsigned int predecessor(treeNode *A, unsigned int leaves, unsigned int index)
+unsigned int predecessor(treeNode *A, unsigned int leaves, unsigned int index)
 {
 	/* in normal tree presentation:
 	// x = "ith leaf"
@@ -84,7 +84,7 @@ inline unsigned int predecessor(treeNode *A, unsigned int leaves, unsigned int i
 
 
 /* Searchs for the successor of i in the tree. */
-inline unsigned int successor(treeNode *A, unsigned int leaves, unsigned int index)
+unsigned int successor(treeNode *A, unsigned int leaves, unsigned int index)
 {
    
 	/* in normal tree presentation:
@@ -114,7 +114,7 @@ inline unsigned int successor(treeNode *A, unsigned int leaves, unsigned int ind
 
 
 /* Inserts leaf 'index' and updates information to the root. */
-inline void insertLeaf(treeNode *A, unsigned int leaves, unsigned int index)
+void insertLeaf(treeNode *A, unsigned int leaves, unsigned int index)
 {
 	unsigned int i = leaves+index;
 	while (i>1) 
@@ -128,7 +128,7 @@ inline void insertLeaf(treeNode *A, unsigned int leaves, unsigned int index)
 
 
 /* Deletes leaf 'index' and updates information to the root. */
-inline void deleteLeaf(treeNode *A, unsigned int leaves, unsigned int index)
+void deleteLeaf(treeNode *A, unsigned int leaves, unsigned int index)
 {
 	unsigned int i = leaves+index;
 	while (i>1 && !A[i].isLeft && !A[i].isRight) 
@@ -142,7 +142,7 @@ inline void deleteLeaf(treeNode *A, unsigned int leaves, unsigned int index)
 
 
 /* Deletes j = successor(index) until values[j] < values[index]. */ 
-inline void deleteGreaterSuccessors(treeNode *A, unsigned int leaves, unsigned int index, int *values)
+void deleteGreaterSuccessors(treeNode *A, unsigned int leaves, unsigned int index, int *values)
 {
 	unsigned int j = successor(A,leaves,index);
 	while (j<leaves && values[j]>=values[index]) 

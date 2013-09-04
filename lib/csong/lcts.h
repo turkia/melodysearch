@@ -82,7 +82,7 @@ typedef struct keyTypeList {
 
 
 
-inline unsigned int log_2(unsigned long n);
+unsigned int log_2(unsigned long n);
 treeNode *CreateCompleteBinaryTree(unsigned int leaves);
 unsigned int predecessor(treeNode *A, unsigned int leaves, unsigned int index);
 unsigned int successor(treeNode *A, unsigned int leaves, unsigned int index);
